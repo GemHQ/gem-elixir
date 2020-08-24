@@ -1,4 +1,4 @@
-# GemEx
+# Gem Elixir SDK
 
 **TODO: Add description**
 
