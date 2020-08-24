@@ -24,7 +24,8 @@ defmodule GemEx.MixProject do
   defp deps do
     [
       {:mojito, "~> 0.7.1"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end
