@@ -11,7 +11,7 @@ defmodule Gem.Client do
     |> process_response()
   end
 
-  def post(path \\ "/", body \\ %{}, query_parameters \\ %{}, opts \\[]) do
+  def post(path \\ "/", body \\ %{}, query_parameters \\ %{}, opts \\ []) do
     mutate(:post, path, body, query_parameters, opts)
   end
 
