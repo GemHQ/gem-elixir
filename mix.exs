@@ -8,7 +8,7 @@ defmodule GemEx.MixProject do
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      package: [licenses: [], links: ["https://gem.co"]],
+      package: [licenses: [], links: %{gem: "https://gem.co"}],
       description: "The Official Gem API Client."
     ]
   end
