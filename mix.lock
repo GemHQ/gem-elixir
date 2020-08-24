@@ -1,0 +1,7 @@
+%{
+  "castore": {:hex, :castore, "0.1.7", "1ca19eee705cde48c9e809e37fdd0730510752cc397745e550f6065a56a701e9", [:mix], [], "hexpm", "a2ae2c13d40e9c308387f1aceb14786dca019ebc2a11484fb2a9f797ea0aa0d8"},
+  "jason": {:hex, :jason, "1.2.1", "12b22825e22f468c02eb3e4b9985f3d0cb8dc40b9bd704730efa11abd2708c44", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm", "b659b8571deedf60f79c5a608e15414085fa141344e2716fbd6988a084b5f993"},
+  "mint": {:hex, :mint, "1.1.0", "1fd0189edd9e3ffdbd7fcd8bc3835902b987a63ec6c4fd1aa8c2a56e2165f252", [:mix], [{:castore, "~> 0.1.0", [hex: :castore, repo: "hexpm", optional: true]}], "hexpm", "5bfd316c3789340b682d5679a8116bcf2112e332447bdc20c1d62909ee45f48d"},
+  "mojito": {:hex, :mojito, "0.7.3", "7356f3b7697d79520a243b48cf0bf8bd1152b2e9cdb6ff7cf22cd0769f32dd40", [:mix], [{:castore, "~> 0.1", [hex: :castore, repo: "hexpm", optional: false]}, {:mint, "~> 1.0", [hex: :mint, repo: "hexpm", optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, repo: "hexpm", optional: false]}], "hexpm", "433479d8ef1c882fafe864ac6d7b08249f321fc46bdcc8db78691bc1ddcf234a"},
+  "poolboy": {:hex, :poolboy, "1.5.2", "392b007a1693a64540cead79830443abf5762f5d30cf50bc95cb2c1aaafa006b", [:rebar3], [], "hexpm", "dad79704ce5440f3d5a3681c8590b9dc25d1a561e8f5a9c995281012860901e3"},
+}
