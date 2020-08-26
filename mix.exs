@@ -1,4 +1,4 @@
-defmodule GemEx.MixProject do
+defmodule Gem.MixProject do
   use Mix.Project
 
   def project do

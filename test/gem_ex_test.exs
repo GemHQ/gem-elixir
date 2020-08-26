@@ -1,8 +1,8 @@
-defmodule GemExTest do
+defmodule GemTest do
   use ExUnit.Case
-  doctest GemEx
+  doctest Gem
 
   test "greets the world" do
-    assert GemEx.hello() == :world
+    assert Gem.hello() == :world
   end
 end

@@ -35,7 +35,7 @@ defmodule Gem.Client do
   end
 
   defp get_config do
-    Application.get_all_env(:gem_ex)
+    Application.get_all_env(:gem)
   end
 
   defp process_response(response) do
