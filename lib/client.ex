@@ -25,9 +25,14 @@ defmodule Gem.Client do
 
   defp mutate(method, path \\ "/", body \\ %{}, query_parameters \\ %{}, opts \\ []) do
     is_multipart? = Keyword.get(opts, :is_multipart?, false)
+    headers = Keyword.get(opts, :headers, [])
     content_type = if is_multipart?, do: "multipart/form-data", else: "application/json"
     url = encode_query_params(path, query_parameters)
-    headers = build_request_headers() ++ [{"Content-Type", content_type}]
+
+    content_type_headers =
+      if is_content_type_set?(headers), do: [], else: [{"Content-Type", content_type}]
+
+    headers = build_request_headers() ++ headers ++ content_type_headers
     body = if is_multipart?, do: body, else: Jason.encode!(body)
 
     Mojito.request(method: method, url: url, headers: headers, body: body)
@@ -101,5 +106,20 @@ defmodule Gem.Client do
 
     :crypto.hmac(:sha256, secret, data)
     |> Base.encode16(case: :lower)
+  end
+
+  defp is_content_type_set?(headers \\ []) do
+    is_header_set? = Enum.find(headers, fn h ->
+      case h do
+        {"content-type", _ct} ->
+          true
+
+        {"Content-Type", _ct} ->
+          true
+
+        _ ->
+          false
+      end
+    end)
   end
 end
