@@ -132,6 +132,10 @@ defmodule Gem do
     )
   end
 
+  def list_profile_documents(opts \\ []) do
+    profile_id = Keyword.get(opts, :profile_id)
+    Gem.Client.get("#{@paths.profiles}/#{profile_id}/documents")
+  end
 
   def list_profile_verifications(opts \\ []) do
     profile_id = Keyword.get(opts, :profile_id)
