@@ -133,6 +133,11 @@ defmodule Gem do
   end
 
 
+  def list_profile_verifications(opts \\ []) do
+    profile_id = Keyword.get(opts, :profile_id)
+    Gem.Client.get("#{@paths.profiles}/#{profile_id}/verifications")
+  end
+
   def create_profile(profile, opts \\ []) do
     user_id = Keyword.get(opts, :user_id)
     Gem.Client.post(@paths.profiles, profile)
