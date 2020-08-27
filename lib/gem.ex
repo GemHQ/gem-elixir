@@ -144,6 +144,6 @@ defmodule Gem do
 
   def create_profile(profile, opts \\ []) do
     user_id = Keyword.get(opts, :user_id)
-    Gem.Client.post(@paths.profiles, profile)
+    Gem.Client.post(@paths.profiles, profile, %{user_id: user_id})
   end
 end
