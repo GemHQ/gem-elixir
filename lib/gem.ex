@@ -43,6 +43,16 @@ defmodule Gem do
     Gem.Client.post("#{@paths.users}/#{user_id}/verify_sms", %{otp_code: otp})
   end
 
+  def create_institution_user(opts \\ []) do
+    institution_id = Keyword.get(opts, :institution_id)
+    profile_id = Keyword.get(opts, :profile_id)
+
+    Gem.Client.post(@paths.institution_users, %{
+      profile_id: profile_id,
+      institution_id: institution_id
+    })
+  end
+
   def list_institution_users(opts \\ []) do
     user_id = Keyword.get(opts, :user_id)
     Gem.Client.get(@paths.institution_users, %{user_id: user_id})
