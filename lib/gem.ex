@@ -80,4 +80,46 @@ defmodule Gem do
     Gem.Client.get(@paths.application_configurations)
   end
 
+  def create_profile_document(document, opts \\ []) do
+    profile_id = Keyword.get(opts, :profile_id)
+    files = document["files"]
+    doc_type = document["type"]
+    doc_description = document["description"]
+
+    builder =
+      Gem.Multipart.new()
+      |> Gem.Multipart.add_field("type", doc_type)
+      |> Gem.Multipart.add_field("description", doc_description)
+
+    builder =
+      Enum.reduce(files, builder, fn file, acc ->
+        %{
+          "data" => data,
+          "description" => description,
+          "media_type" => media_type,
+          "orientation" => orientation
+        } = file
+
+        acc
+        |> Gem.Multipart.add_field("files[0][data]", data)
+        |> Gem.Multipart.add_field("files[0][media_type]", media_type)
+        |> Gem.Multipart.add_field("files[0][orientation]", orientation)
+        |> Gem.Multipart.add_field("files[0][description]", description)
+      end)
+
+    body =
+      builder
+      |> Gem.Multipart.body()
+      |> Enum.join("")
+
+    headers =
+      builder
+      |> Gem.Multipart.headers()
+
+    Gem.Client.post("#{@paths.profiles}/#{profile_id}/documents", body, nil,
+      is_multipart?: true,
+      headers: headers
+    )
+  end
+
 end
