@@ -109,17 +109,18 @@ defmodule Gem.Client do
   end
 
   defp is_content_type_set?(headers \\ []) do
-    is_header_set? = Enum.find(headers, fn h ->
-      case h do
-        {"content-type", _ct} ->
-          true
+    is_header_set? =
+      Enum.find(headers, fn h ->
+        case h do
+          {"content-type", _ct} ->
+            true
 
-        {"Content-Type", _ct} ->
-          true
+          {"Content-Type", _ct} ->
+            true
 
-        _ ->
-          false
-      end
-    end)
+          _ ->
+            false
+        end
+      end)
   end
 end
