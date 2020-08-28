@@ -52,9 +52,12 @@ defmodule Gem.Client do
       {:ok, res = %Mojito.Response{status_code: status}} when status >= 400 ->
         body = Jason.decode!(res.body)
         e = %Gem.APIError{}
-        code = Map.get(body, "code", e.code)
+        error = Map.get(body, "error", e.error)
+        error_map = Map.get(body, "error_map")
         description = Map.get(body, "description", e.description)
-        {:error, %{e | code: code, description: description, status: status}}
+
+        {:error,
+         %{e | error: error, description: description, status: status, error_map: error_map}}
 
       e ->
         {:error, %Gem.APIError{}, e}
